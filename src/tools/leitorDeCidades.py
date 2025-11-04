@@ -18,7 +18,7 @@ def lerMatrizCidades(arquivo_path="../dados.txt"):
             distancias = []
             for item in partes[1:]:
                 try:
-                    distancias.append(int(item))
+                    distancias.append(float(item))
                 except ValueError:
                     pass  # ignora se não for número
             matriz.append(distancias)
