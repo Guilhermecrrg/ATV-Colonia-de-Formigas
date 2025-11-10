@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # PCV
-# Informacao heuristica = distancia
+# Informacao heuristica = distancia.
 
 # cidades a serem visitadas
 CIDADES: tp.Final[int] = 10
