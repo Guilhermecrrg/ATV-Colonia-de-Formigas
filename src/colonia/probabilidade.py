@@ -1,5 +1,4 @@
 import config
-import random
 
 def calcularProbabilidades(cidadeAtual, visitadas, matrizDistancia, matrizFeromonio):
     destinos_possiveis = []
@@ -29,6 +28,9 @@ def calcularProbabilidades(cidadeAtual, visitadas, matrizDistancia, matrizFeromo
         soma += valor
 
     if soma == 0:  
+        print(">>> ERRO: Nenhum destino possível saindo de", cidadeAtual)
+        print("Visitadas:", visitadas)
+        print("Sobrou para visitar:", set(range(len(matrizDistancia))) - visitadas)
         return None, None  # formiga fica presa (sem caminhos possíveis)
 
     return destinos_possiveis, [p / soma for p in probabilidades]

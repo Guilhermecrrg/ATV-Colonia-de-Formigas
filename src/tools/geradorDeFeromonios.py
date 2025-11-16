@@ -1,5 +1,5 @@
 import random
-import config
+from .. import config
 
 def gerarFeromonios(num_feromonios = config.CIDADES):
 
@@ -16,8 +16,8 @@ def gerarFeromonios(num_feromonios = config.CIDADES):
                     arquivo.write("Cidade da Pizzaria, ")
                 else:
                     arquivo.write(f"Cidade {i}, ")
-                for y in range(1, num_feromonios):
-                    if y == i+1:
+                for y in range(num_feromonios):
+                    if y == i:
                         distancia = 9.99
                     else:
                         # Remove espaços extras e quebra de linha

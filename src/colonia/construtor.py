@@ -11,7 +11,7 @@ def construirCaminho(matrizDistancia, matrizFeromonio):
         destinosPossiveis, probabilidades = calcularProbabilidades(
             cidadeAtual, visitadas, matrizDistancia, matrizFeromonio
         )
-
+        
         if probabilidades is None:
             return None  # caminho impossível
 
