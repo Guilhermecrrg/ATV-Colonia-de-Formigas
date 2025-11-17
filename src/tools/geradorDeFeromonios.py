@@ -29,7 +29,7 @@ def gerarFeromonios(num_feromonios = config.CIDADES):
                         partes = [p.strip() for p in partes if p.strip() != ""]
 
                         # Ignora o primeiro elemento (ex: "Cidade 1")
-                        if partes[y] != '0':
+                        if partes[y+1] != '0':
                             distancia = random.uniform(0.1, 0.4)
                         else:
                             distancia = 0
