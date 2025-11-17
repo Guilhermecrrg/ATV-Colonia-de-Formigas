@@ -2,14 +2,14 @@ import random
 import config
 from colonia.probabilidade import calcularProbabilidades
 
-def construirCaminho(matrizDistancia, matrizFeromonio):
+def construirCaminho(matrizDistancia, matrizFeromonio, graus):
     cidadeAtual = config.CIDADE_INICIAL
     visitadas = {cidadeAtual}
     caminho = [cidadeAtual]
 
     while len(visitadas) < config.CIDADES:
         destinosPossiveis, probabilidades = calcularProbabilidades(
-            cidadeAtual, visitadas, matrizDistancia, matrizFeromonio
+            cidadeAtual, visitadas, matrizDistancia, matrizFeromonio, graus
         )
         
         if probabilidades is None:

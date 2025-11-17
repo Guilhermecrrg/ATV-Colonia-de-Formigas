@@ -4,7 +4,7 @@ from colonia.construtor import construirCaminho
 from colonia.atualizacao import evaporarFeromonios, depositarFeromonios
 
 def executarACO():
-    matrizDistancia, matrizFeromonio = carregarDados()
+    matrizDistancia, matrizFeromonio, graus = carregarDados()
 
     melhorCaminho = None
     melhorCusto = float("inf")
@@ -14,7 +14,7 @@ def executarACO():
         caminhos = []
 
         for _ in range(config.FORMIGAS):
-            caminho = construirCaminho(matrizDistancia, matrizFeromonio)
+            caminho = construirCaminho(matrizDistancia, matrizFeromonio, graus)
             if caminho is not None:
                 caminhos.append(caminho)
 

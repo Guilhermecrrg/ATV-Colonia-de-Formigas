@@ -1,6 +1,6 @@
 import config
 
-def calcularProbabilidades(cidadeAtual, visitadas, matrizDistancia, matrizFeromonio):
+def calcularProbabilidades(cidadeAtual, visitadas, matrizDistancia, matrizFeromonio, graus):
     destinos_possiveis = []
     probabilidades = []
     soma = 0
@@ -18,15 +18,18 @@ def calcularProbabilidades(cidadeAtual, visitadas, matrizDistancia, matrizFeromo
         # print('destino =>', destino)
         # print('len(matrizDistancia) =>', len(matrizDistancia))
         # print('matrizFeromonio =>', matrizFeromonio)
-
+        
+        grau_destino = graus[destino]
+        peso_grau = ((1/grau_destino) ** 2.0) 
         fer = matrizFeromonio[cidadeAtual][destino] ** config.ALFA
         vis = (1 / distancia) ** config.BETA
-        valor = fer * vis
+        valor = fer * vis * peso_grau
         
         destinos_possiveis.append(destino)
         probabilidades.append(valor)
         soma += valor
 
+    
     if soma == 0:  
         print(">>> ERRO: Nenhum destino possível saindo de", cidadeAtual)
         print("Visitadas:", visitadas)
