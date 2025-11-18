@@ -20,10 +20,10 @@ def calcularProbabilidades(cidadeAtual, visitadas, matrizDistancia, matrizFeromo
         # print('matrizFeromonio =>', matrizFeromonio)
         
         grau_destino = graus[destino]
-        peso_grau = ((1/grau_destino) ** 2.0) 
-        fer = matrizFeromonio[cidadeAtual][destino] ** config.ALFA
-        vis = (1 / distancia) ** config.BETA
-        valor = fer * vis * peso_grau
+        grau = ((1/grau_destino) ** config.GRAU) 
+        fer = matrizFeromonio[cidadeAtual][destino] ** config.FEROMONIO
+        vis = (1 / distancia) ** config.CUSTO
+        valor = fer * vis * grau
         
         destinos_possiveis.append(destino)
         probabilidades.append(valor)
@@ -31,9 +31,9 @@ def calcularProbabilidades(cidadeAtual, visitadas, matrizDistancia, matrizFeromo
 
     
     if soma == 0:  
-        print(">>> ERRO: Nenhum destino possível saindo de", cidadeAtual)
-        print("Visitadas:", visitadas)
-        print("Sobrou para visitar:", set(range(len(matrizDistancia))) - visitadas)
+        # print(">>> ERRO: Nenhum destino possível saindo de", cidadeAtual)
+        # print("Visitadas:", visitadas)
+        # print("Sobrou para visitar:", set(range(len(matrizDistancia))) - visitadas)
         return None, None  # formiga fica presa (sem caminhos possíveis)
 
     return destinos_possiveis, [p / soma for p in probabilidades]

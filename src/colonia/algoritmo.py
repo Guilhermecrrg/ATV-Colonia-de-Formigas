@@ -12,6 +12,7 @@ def executarACO():
 
     for iteracao in range(config.ITERACOES):
         caminhos = []
+        custoCaminhos = []
 
         for _ in range(config.FORMIGAS):
             caminho = construirCaminho(matrizDistancia, matrizFeromonio, graus)
@@ -25,6 +26,7 @@ def executarACO():
         # escolher melhor da iteração
         for caminho in caminhos:
             custo = sum(matrizDistancia[a][b] for a, b in zip(caminho[:-1], caminho[1:]))
+            custoCaminhos.append(custo)
             if custo < melhorCusto:
                 melhorCusto = custo
                 melhorCaminho = caminho
@@ -32,8 +34,8 @@ def executarACO():
         historicoMelhores.append(melhorCusto)
 
         evaporarFeromonios(matrizFeromonio)
-        depositarFeromonios(matrizFeromonio, caminhos, matrizDistancia)
+        depositarFeromonios(matrizFeromonio, caminhos, custoCaminhos)
 
         print(f"Iteração {iteracao}: Melhor custo atual = {melhorCusto:.2f}")
 
-    return melhorCaminho, melhorCusto, historicoMelhores
+    return melhorCaminho, melhorCusto, historicoMelhores, matrizDistancia
